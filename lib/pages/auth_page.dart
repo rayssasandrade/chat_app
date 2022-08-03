@@ -51,7 +51,7 @@ class _AuthPageState extends State<AuthPage> {
             child: Image(
               height: deviceSize.height * 0.25,
               width: double.infinity,
-              image: AssetImage('assets/images/background.png'),
+              image: const AssetImage('assets/images/background.png'),
               fit: BoxFit.cover,
             ),
           ),

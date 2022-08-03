@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import '../../models/chat_user.dart';
-import 'auth_firebase_service.dart';
+import 'package:chat_app/core/models/chat_user.dart';
+import 'package:chat_app/core/services/auth/auth_firebase_service.dart';
 
 abstract class AuthService {
   ChatUser? get currentUser;

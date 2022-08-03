@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
 
-import '../core/models/chat_message.dart';
+import 'package:chat_app/core/models/chat_message.dart';
+import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
   static const _defaultImage = 'assets/images/avatar.png';
@@ -17,6 +17,7 @@ class MessageBubble extends StatelessWidget {
   Widget _showUserImage(String imageURL) {
     ImageProvider? provider;
     final uri = Uri.parse(imageURL);
+
     if (uri.path.contains(_defaultImage)) {
       provider = const AssetImage(_defaultImage);
     } else if (uri.scheme.contains('http')) {
@@ -55,14 +56,14 @@ class MessageBubble extends StatelessWidget {
                       : Radius.circular(50),
                 ),
               ),
-              margin: const EdgeInsets.symmetric(
-                vertical: 15,
-                horizontal: 8,
-              ),
               width: 190,
               padding: const EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 20,
+              ),
+              margin: const EdgeInsets.symmetric(
+                vertical: 15,
+                horizontal: 8,
               ),
               child: Column(
                 crossAxisAlignment: belongsToCurrentUser
@@ -93,9 +94,7 @@ class MessageBubble extends StatelessWidget {
           top: 0,
           left: belongsToCurrentUser ? null : 165,
           right: belongsToCurrentUser ? 165 : null,
-          child: _showUserImage(
-            message.userImageURL,
-          ),
+          child: _showUserImage(message.userImageURL),
         ),
       ],
     );

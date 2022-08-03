@@ -2,7 +2,7 @@ class ChatNotification {
   final String title;
   final String body;
 
-  ChatNotification({
+  const ChatNotification({
     required this.title,
     required this.body,
   });

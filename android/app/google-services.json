@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "882931265164",
+    "project_id": "app-chat-8c2a9",
+    "storage_bucket": "app-chat-8c2a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882931265164:android:a8ac9171e887becdc8d5a9",
+        "android_client_info": {
+          "package_name": "br.com.app.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882931265164-o1g1s9lj33rgslb2rl65fl1vtn75odm6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-3GpbDkkQOz6GV1K12rv3JZj-WSGt-Z8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882931265164-o1g1s9lj33rgslb2rl65fl1vtn75odm6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

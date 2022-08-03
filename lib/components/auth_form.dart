@@ -1,9 +1,8 @@
 import 'dart:io';
 
 import 'package:chat_app/components/user_image_picker.dart';
+import 'package:chat_app/core/models/auth_form_data.dart';
 import 'package:flutter/material.dart';
-
-import '../core/models/auth_form_data.dart';
 
 class AuthForm extends StatefulWidget {
   final void Function(AuthFormData) onSubmit;
@@ -60,11 +59,11 @@ class _AuthFormState extends State<AuthForm> {
           child: Column(
             children: [
               if (_formData.isSignup)
-              UserImagePicker( 
-                onImagePick: _handleImagePick,
-              ),
+                UserImagePicker(
+                  onImagePick: _handleImagePick,
+                ),
               SizedBox(height: 10.0),
-              if(!_formData.isLogin)
+              if (_formData.isSignup)
                 Container(
                   height: 60,
                   padding: const EdgeInsets.all(7.0),
@@ -72,26 +71,28 @@ class _AuthFormState extends State<AuthForm> {
                     key: const ValueKey('name'),
                     initialValue: _formData.name,
                     onChanged: (name) => _formData.name = name,
-                    decoration:const InputDecoration(
-                      labelText: 'Nome' ,
+                    decoration: const InputDecoration(
+                      labelText: 'Nome',
                       labelStyle: TextStyle(
                         color: Color.fromRGBO(72, 90, 136, 1),
                       ),
                       filled: true,
                       fillColor: Color.fromRGBO(244, 245, 247, 1),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color.fromRGBO(72, 90, 136, 1), width: 2),
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(72, 90, 136, 1), width: 2),
                         borderRadius: BorderRadius.all(Radius.circular(32)),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color.fromRGBO(244, 245, 247, 1), width: 0),
+                        borderSide: BorderSide(
+                            color: Color.fromRGBO(244, 245, 247, 1), width: 0),
                         borderRadius: BorderRadius.all(Radius.circular(32)),
                       ),
                     ),
                     validator: (_name) {
                       final name = _name ?? '';
-                      if(name.trim().length < 5){
-                        return 'Nome deve ter no mínimo 5 caracteries';
+                      if (name.trim().length < 5) {
+                        return 'Nome deve ter no mínimo 5 caracteres.';
                       }
                       return null;
                     },
@@ -105,25 +106,27 @@ class _AuthFormState extends State<AuthForm> {
                   initialValue: _formData.email,
                   onChanged: (email) => _formData.email = email,
                   decoration: const InputDecoration(
-                    labelText: 'E-mail',
+                    labelText: 'Email',
                     labelStyle: TextStyle(
                       color: Color.fromRGBO(72, 90, 136, 1),
                     ),
                     filled: true,
                     fillColor: Color.fromRGBO(244, 245, 247, 1),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color.fromRGBO(72, 90, 136, 1), width: 2),
+                      borderSide: BorderSide(
+                          color: Color.fromRGBO(72, 90, 136, 1), width: 2),
                       borderRadius: BorderRadius.all(Radius.circular(32)),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color.fromRGBO(244, 245, 247, 1), width: 0),
+                      borderSide: BorderSide(
+                          color: Color.fromRGBO(244, 245, 247, 1), width: 0),
                       borderRadius: BorderRadius.all(Radius.circular(32)),
                     ),
                   ),
                   validator: (_email) {
                     final email = _email ?? '';
-                    if(!email.contains('@')){
-                      return 'E-mail inválido!';
+                    if (!email.contains('@')) {
+                      return 'E-mail informado não é válido.';
                     }
                     return null;
                   },
@@ -134,16 +137,9 @@ class _AuthFormState extends State<AuthForm> {
                 padding: const EdgeInsets.all(7.0),
                 child: TextFormField(
                   key: const ValueKey('password'),
-                  obscureText: true,
                   initialValue: _formData.password,
                   onChanged: (password) => _formData.password = password,
-                  validator: (_password) {
-                    final password = _password ?? '';
-                    if(password.length < 6){
-                      return 'Senha deve ter no mínimo 6 caracteries';
-                    }
-                    return null;
-                  },
+                  obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Senha',
                     labelStyle: TextStyle(
@@ -152,23 +148,32 @@ class _AuthFormState extends State<AuthForm> {
                     filled: true,
                     fillColor: Color.fromRGBO(244, 245, 247, 1),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color.fromRGBO(72, 90, 136, 1), width: 2),
+                      borderSide: BorderSide(
+                          color: Color.fromRGBO(72, 90, 136, 1), width: 2),
                       borderRadius: BorderRadius.all(Radius.circular(32)),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color.fromRGBO(244, 245, 247, 1), width: 0),
+                      borderSide: BorderSide(
+                          color: Color.fromRGBO(244, 245, 247, 1), width: 0),
                       borderRadius: BorderRadius.all(Radius.circular(32)),
                     ),
                   ),
+                  validator: (_password) {
+                    final password = _password ?? '';
+                    if (password.length < 6) {
+                      return 'Senha deve ter no mínimo 6 caracteres.';
+                    }
+                    return null;
+                  },
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10),
               Container(
                 height: 50,
                 padding: const EdgeInsets.only(left: 7, right: 7, top: 5),
                 child: ElevatedButton(
                   onPressed: _submit,
-                  child: Text(_formData.isLogin ? 'Entrar': 'Cadastrar'),
+                  child: Text(_formData.isLogin ? 'Entrar' : 'Cadastrar'),
                   style: ElevatedButton.styleFrom(
                     primary: Theme.of(context).primaryColor,
                     fixedSize: Size(MediaQuery.of(context).size.width, 0),
@@ -183,7 +188,11 @@ class _AuthFormState extends State<AuthForm> {
                 ),
               ),
               TextButton(
-                child: Text(_formData.isLogin ? 'Criar uma nova conta?' : 'Já possui conta?'),
+                child: Text(
+                  _formData.isLogin
+                      ? 'Criar uma nova conta?'
+                      : 'Já possui conta?',
+                ),
                 onPressed: () {
                   setState(() {
                     _formData.toggleAuthMode();
