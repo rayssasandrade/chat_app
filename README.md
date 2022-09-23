@@ -23,7 +23,7 @@ O projeto é a codificação de um aplicativo de chat em dispositivos móveis na
 
 - Execução do algoritmo 
 
-<img src="/assets/images/cadastro.png" alt="cadastro" height="400em" /><img src="/assets/images/login.png" alt="login" height="400em" /><img src="/assets/images/salaBatePapo.png" alt="sala de batepapo" height="400em" /><img src="/assets/images/notificações.png" alt="notificações" height="400em" />
+<img src="/assets/images/cadastro.png" alt="cadastro" height="400em" /><img src="/assets/images/telalogin.png" alt="login" height="400em" /><img src="/assets/images/salaBatePapo.png" alt="sala de batepapo" height="400em" /><img src="/assets/images/notificações.png" alt="notificações" height="400em" />
 
 ### Autor
 
